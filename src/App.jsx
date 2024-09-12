@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
-// import ProtectedRoute from "./ui/ProtectedRoute";
+import ProtectedRoute from "./ui/ProtectedRoute";
 import ErrorPage from "./ui/ErrorPage";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
@@ -35,9 +35,9 @@ function App() {
             <Route
               path="/"
               element={
-                // <ProtectedRoute>
-                <AppLayout />
-                // </ProtectedRoute>
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
               }
             >
               <Route index element={<Dashboard />} />

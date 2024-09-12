@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./ui/ProtectedRoute";
-// import { DarkModeProvider } from "./context/DarkModeContext";
 import ErrorPage from "./ui/ErrorPage";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
@@ -28,7 +27,6 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    // <DarkModeProvider>
     <QueryClientProvider client={queryClient}>
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       <BrowserRouter>
@@ -88,7 +86,6 @@ function App() {
         }}
       />
     </QueryClientProvider>
-    // </DarkModeProvider>
   );
 }
 

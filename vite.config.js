@@ -5,7 +5,7 @@ import eslint from "vite-plugin-eslint";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), eslint()],
-  base: "./", // Ensure correct asset paths are used in production
+  base: "/", // Ensure correct asset paths are used in production
   build: {
     outDir: "dist", // Output directory for the build
   },

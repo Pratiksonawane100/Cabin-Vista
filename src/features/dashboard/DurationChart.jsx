@@ -1,6 +1,4 @@
 import PropTypes from "prop-types";
-// import Tag from "../../ui/Tag";
-// import { Flag } from "../../ui/Flag";
 import {
   Cell,
   Legend,
@@ -9,9 +7,8 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import { useDarkMode } from "../../context/DarkModeContext";
 
-const startDataLight = [
+const startData = [
   { duration: "1 night", value: 0, color: "#ef4444" },
   { duration: "2 nights", value: 0, color: "#f97316" },
   { duration: "3 nights", value: 0, color: "#eab308" },
@@ -20,17 +17,6 @@ const startDataLight = [
   { duration: "8-14 nights", value: 0, color: "#14b8a6" },
   { duration: "15-21 nights", value: 0, color: "#3b82f6" },
   { duration: "21+ nights", value: 0, color: "#a855f7" },
-];
-
-const startDataDark = [
-  { duration: "1 night", value: 0, color: "#b91c1c" },
-  { duration: "2 nights", value: 0, color: "#c2410c" },
-  { duration: "3 nights", value: 0, color: "#a16207" },
-  { duration: "4-5 nights", value: 0, color: "#4d7c0f" },
-  { duration: "6-7 nights", value: 0, color: "#15803d" },
-  { duration: "8-14 nights", value: 0, color: "#0f766e" },
-  { duration: "15-21 nights", value: 0, color: "#1d4ed8" },
-  { duration: "21+ nights", value: 0, color: "#7e22ce" },
 ];
 
 function prepareData(startData, stays) {
@@ -60,13 +46,11 @@ function prepareData(startData, stays) {
 }
 
 function DurationChart({ confirmedStays }) {
-  const { isDarkMode } = useDarkMode();
-  const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, confirmedStays);
 
   return (
     <div className="w-full bg-white p-6 rounded-lg shadow-lg">
-      <h3 className="text-xl font-semibold mb-4 dark:text-gray-500">
+      <h3 className="text-xl font-semibold mb-4 text-gray-900">
         Stay Duration Summary
       </h3>
       <ResponsiveContainer width="100%" height={300}>

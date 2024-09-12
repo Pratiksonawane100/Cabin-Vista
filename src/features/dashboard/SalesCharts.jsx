@@ -9,7 +9,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useDarkMode } from "../../context/DarkModeContext";
 import {
   eachDayOfInterval,
   format,
@@ -20,8 +19,6 @@ import {
 } from "date-fns";
 
 function SalesChart({ bookings }) {
-  const { isDarkMode } = useDarkMode();
-
   // Get the current date and the date one month prior
   const startDate = startOfMonth(subMonths(new Date(), 1));
   const endDate = endOfMonth(new Date());
@@ -57,26 +54,17 @@ function SalesChart({ bookings }) {
     };
   });
 
-  const colors = isDarkMode
-    ? {
-        totalSales: { stroke: "#4f46e5", fill: "#4f46e5" },
-        extrasSales: { stroke: "#22c55e", fill: "#22c55e" },
-        text: "#e5e7eb",
-        background: "#18212f",
-      }
-    : {
-        totalSales: { stroke: "#4f46e5", fill: "#c7d2fe" },
-        extrasSales: { stroke: "#16a34a", fill: "#dcfce7" },
-        text: "#374151",
-        background: "#fff",
-      };
+  // Fixed color scheme
+  const colors = {
+    totalSales: { stroke: "#4f46e5", fill: "#c7d2fe" },
+    extrasSales: { stroke: "#16a34a", fill: "#dcfce7" },
+    text: "#374151",
+    background: "#fff",
+  };
 
   return (
     <div className="w-full bg-white p-4 rounded-lg shadow-md">
-      <Heading
-        as="h3"
-        className="text-xl font-semibold mb-4 dark:text-gray-500"
-      >
+      <Heading as="h3" className="text-xl font-semibold mb-4 text-gray-900">
         Sales from {format(startDate, "MMM dd yyyy")} &mdash;{" "}
         {format(endDate, "MMM dd yyyy")}
       </Heading>

@@ -20,7 +20,7 @@ const AppLayout = lazy(() => import("./ui/AppLayout"));
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 1000, // Cache data for 1 minute
+      staleTime: 62 * 1000, // Cache data for 1 minute
     },
   },
 });
